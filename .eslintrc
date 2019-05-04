@@ -4,10 +4,11 @@
 		"xo-nextjs",
 		"plugin:import/errors",
 		"plugin:react/recommended",
-		"plugin:react-hooks",
 		"plugin:jsx-a11y/recommended"
 	],
 	"rules": {
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn",
 		"react/default-props-match-prop-types": 0,
 		"react/react-in-jsx-scope": 0,
 		"react/prop-types": 0,
@@ -252,14 +253,15 @@
 	"plugins": [
 		"react",
 		"import",
-		"jsx-a11y"
+		"jsx-a11y",
+		"react-hooks"
 	],
 	"parser": "babel-eslint",
 	"settings": {
 		"react": {
 			"createClass": "createReactClass",
 			"pragma": "React",
-			"version": "16.8.2",
+			"version": "16.8.6",
 			"flowVersion": "0.53"
 		},
 		"propWrapperFunctions": [
