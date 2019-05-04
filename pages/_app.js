@@ -1,7 +1,6 @@
 import App, { Container } from 'next/app';
 import React from 'react';
 import Router from 'next/router';
-// Import NProgress from 'next-nprogress/component';
 import UserContext from '../components/UserContext';
 
 class MyApp extends App {
@@ -37,7 +36,6 @@ class MyApp extends App {
 
 		return (
 			<Container>
-				{/* <NProgress color="#F43779" options={{ trickleSpeed: 50 }} showAfterMs={0} /> */}
 				<UserContext.Provider
 					value={{
 						user: this.state.user,
