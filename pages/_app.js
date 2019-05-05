@@ -2,6 +2,7 @@ import App, { Container } from 'next/app';
 import React from 'react';
 import Router from 'next/router';
 import UserContext from '../components/UserContext';
+import Layout from '../containers/Layout';
 
 import '@fortawesome/fontawesome-free/css/brands.css';
 import '@fortawesome/fontawesome-free/css/regular.css';
@@ -13,7 +14,7 @@ import '../styles/app.scss';
 
 class MyApp extends App {
 	state = {
-		user: true,
+		user: null,
 		theme: 'dark'
 	};
 
@@ -35,7 +36,7 @@ class MyApp extends App {
 				user
 			} );
 		} else {
-			Router.push( '/login' );
+			Router.push( '/upload' );
 		}
 	};
 
@@ -50,9 +51,9 @@ class MyApp extends App {
 						theme: this.state.theme
 					}}
 				>
-					{/* <Layout> */}
-					<Component {...pageProps} />
-					{/* </Layout> */}
+					<Layout>
+						<Component {...pageProps} />
+					</Layout>
 				</UserContext.Provider>
 			</Container>
 		);
