@@ -36,7 +36,7 @@ class MyApp extends App {
 				user
 			} );
 		} else {
-			Router.push( '/upload' );
+			Router.push( '/login' );
 		}
 	};
 

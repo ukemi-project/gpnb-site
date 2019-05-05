@@ -1,0 +1,67 @@
+// Text sizing
+.text-sm {
+	font-size: $text-sm;
+}
+.text-md {
+	font-size: $text-md;
+}
+.text-lg {
+	font-size: $text-lg;
+}
+
+// Text others
+
+.text-nowrap {
+	white-space: nowrap;
+}
+.text-thin {
+	font-weight: 100 !important;
+}
+.text-normal {
+	font-weight: normal !important;
+}
+.text-bold {
+	font-weight: bold !important;
+}
+
+.inline {
+	display: inline-block !important;
+}
+.block-center {
+	margin: 0 auto;
+}
+
+// Components size
+.wd-xxs {
+	width: $wd-xxs;
+}
+.wd-xs {
+	width: $wd-xs;
+}
+.wd-sm {
+	width: $wd-sm;
+}
+.wd-sd {
+	width: $wd-sd;
+}
+.wd-md {
+	width: $wd-md;
+}
+.wd-lg {
+	width: $wd-lg;
+}
+.wd-xl {
+	width: $wd-xl;
+}
+.wd-xxl {
+	width: $wd-xxl;
+}
+.wd-wide {
+	width: $wd-wide;
+}
+.wd-auto {
+	width: $wd-auto;
+}
+.wd-zero {
+	width: $wd-zero;
+}
