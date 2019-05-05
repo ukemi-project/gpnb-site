@@ -27,7 +27,7 @@ class MyApp extends App {
 				user
 			} );
 		} else {
-			Router.push( '/signin' );
+			Router.push( '/login' );
 		}
 	};
 
@@ -42,7 +42,9 @@ class MyApp extends App {
 						theme: this.state.theme
 					}}
 				>
+					{/* <Layout> */}
 					<Component {...pageProps} />
+					{/* </Layout> */}
 				</UserContext.Provider>
 			</Container>
 		);
