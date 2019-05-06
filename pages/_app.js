@@ -10,6 +10,7 @@ import '@fortawesome/fontawesome-free/css/solid.css';
 import '@fortawesome/fontawesome-free/css/fontawesome.css';
 import 'simple-line-icons/css/simple-line-icons.css';
 
+import '../styles/bootstrap.scss';
 import '../styles/app.scss';
 
 class MyApp extends App {

@@ -1,4 +1,12 @@
-@import "node_modules/bootstrap/scss/bootstrap";
-@import "layout/variables";
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+@import "variables";
+
 @import "layout/layout";
 @import "layout/util";
+
+@import "components/cards";
+
+@import "components/reset-bootstrap";

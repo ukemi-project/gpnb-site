@@ -10,7 +10,6 @@
 }
 
 // Text others
-
 .text-nowrap {
 	white-space: nowrap;
 }
@@ -23,12 +22,14 @@
 .text-bold {
 	font-weight: bold !important;
 }
-
 .inline {
 	display: inline-block !important;
 }
 .block-center {
 	margin: 0 auto;
+}
+.text-inherit {
+	color: inherit !important;
 }
 
 // Components size
