@@ -16,12 +16,15 @@
 		"bootstrap": "^4.3.1",
 		"express": "^4.16.4",
 		"express-fileupload": "^1.1.4",
+		"express-session": "^1.16.1",
 		"firebase": "^6.0.1",
+		"firebase-admin": "^7.3.0",
 		"next": "^8.1.0",
 		"next-nprogress": "^1.4.0",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
 		"reactstrap": "^8.0.0",
+		"session-file-store": "^1.2.0",
 		"simple-line-icons": "^2.4.1"
 	},
 	"devDependencies": {
@@ -37,6 +40,7 @@
 		"babel-plugin-module-resolver": "^3.2.0",
 		"concurrently": "^4.1.0",
 		"cross-env": "^5.2.0",
+		"dotenv": "^8.0.0",
 		"eslint": "^5.16.0",
 		"eslint-config-xo": "^0.26.0",
 		"eslint-config-xo-nextjs": "^1.4.0",

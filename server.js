@@ -1,12 +1,18 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
+import next from 'next';
 import express from 'express';
 import fileUpload from 'express-fileupload';
-import next from 'next';
+import session from 'express-session';
+import * as admin from 'firebase-admin';
 
 import path from 'path';
 import cluster from 'cluster';
 import bodyParser from 'body-parser';
 
-const numCPUs = require( 'os' ).cpus().length,
+const FileStore = require( 'session-file-store' )( session ),
+	numCPUs = require( 'os' ).cpus().length,
 	dev = process.env.NODE_ENV !== 'production',
 	port = process.env.PORT || 3000,
 	routes = [ { src: '/login', dest: '/pages/login' } ];
@@ -24,7 +30,14 @@ if ( !dev && cluster.isMaster ) {
 	} );
 } else {
 	const app = next( { dir: '.', dev } ),
-		handle = app.getRequestHandler();
+		handle = app.getRequestHandler(),
+		firebase = admin.initializeApp(
+			{
+				credential: admin.credential.cert( require( './credentials/server' ) ),
+				databaseURL: '' // TODO database URL goes here
+			},
+			'server'
+		);
 
 	app
 		.prepare()
