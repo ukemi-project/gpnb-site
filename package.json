@@ -6,10 +6,9 @@
 	"author": "Daniel Smith",
 	"license": "MIT",
 	"scripts": {
-		"start": "node server.js",
-		"server": "nodemon --exec yarn babel-node --inspect server.js",
-		"client": "yarn next -p 7777",
-		"dev": "concurrently \"yarn server\" \"yarn client\""
+		"dev": "nodemon --exec yarn babel-node --inspect server.js",
+		"start": "next start",
+		"build": "next build"
 	},
 	"dependencies": {
 		"@babel/polyfill": "^7.4.4",
