@@ -1,3 +1,25 @@
+*:not(.react-grid-Cell):focus {
+	outline: 0 !important;
+}
+
+a {
+	outline: none !important;
+	&.text-muted {
+		&:hover,
+		&:focus {
+			color: darken($text-muted, 10%);
+		}
+	}
+}
+
+hr {
+	border-top: 1px solid $gray-light;
+}
+
+[data-now] {
+	display: inline-block;
+}
+
 .card {
 	border-color: transparent;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -12,5 +34,20 @@
 		a {
 			text-decoration: none !important;
 		}
+	}
+}
+.card-body {
+	padding: 0.9375rem; //15px
+}
+.card-footer {
+	padding: 0.625rem 0.9375rem;
+}
+
+.card-default {
+	border-top-width: 3px;
+	border-color: $card-default-border-color;
+
+	.card-header {
+		background-color: #fff;
 	}
 }

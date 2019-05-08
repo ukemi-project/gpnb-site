@@ -7,9 +7,14 @@ const Login = () => (
 				{/* <img className='block-center rounded' src='/static/img/logo.png' alt='Logo' /> */}
 				<h5 className='block-center text-white'>GPNB</h5>
 			</div>
+			<div className='card-body'>
+				<p className='text-center py-2'>SIGN IN TO CONTINUE.</p>
+			</div>
 			<div className='p-3 text-center'>
 				<span className='mr-2'>&copy;</span>
-				<span>2019</span> - <span>The Greatest Park Never Built</span>
+				<span>2019</span>
+				<span className='mx-2'>-</span>
+				<span>The Greatest Park Never Built</span>
 				<br />
 				<span>
 					Maintained by @<a href='https://ukemi.ninja'>UkemiProject</a>

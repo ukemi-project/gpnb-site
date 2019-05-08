@@ -1,3 +1,7 @@
+$z-index-main-section: 111;
+$content-bg: $body-bg;
+$footer-hg: 60px;
+
 html {
 	height: 100%;
 	-ms-touch-action: manipulation;
@@ -11,4 +15,13 @@ html {
 	height: auto;
 	min-height: 100%;
 	overflow-x: hidden;
+
+	.section-container {
+		position: relative;
+		height: 100%;
+		margin-left: 0; // overflow: hidden;
+		z-index: $z-index-main-section;
+		background-color: $content-bg;
+		margin-bottom: $footer-hg !important; // ensure a space for the footer
+	}
 }
