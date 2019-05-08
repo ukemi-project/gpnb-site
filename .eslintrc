@@ -185,7 +185,7 @@
 			"always"
 		],
 		"one-var": [
-			2,
+			0,
 			"consecutive"
 		],
 		"operator-linebreak": [

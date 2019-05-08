@@ -20,6 +20,7 @@ hr {
 	display: inline-block;
 }
 
+// Cards
 .card {
 	border-color: transparent;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -50,4 +51,129 @@ hr {
 	.card-header {
 		background-color: #fff;
 	}
+}
+
+// Buttons
+.btn {
+	border-radius: 3px;
+	font-size: 13px;
+	-webkit-appearance: none;
+	outline: none !important; // padding: 0.375rem 1rem;
+	@include transition(all .1s);
+	&.btn-link {
+		box-shadow: none;
+		border: 0;
+	}
+	.input-group & {
+		font-size: 14px;
+		border-color: $input-border-color;
+	}
+	.input-group .form-control-sm + .input-group-btn & {
+		font-size: 0.8125rem;
+		padding: 0.3125rem 0.625rem;
+		margin-left: -1px;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+}
+
+// Override button styles
+.btn {
+	&.btn-warning {
+		color: #fff;
+	}
+	&.btn-outline-warning {
+		@include hover-focus-active {
+			color: #fff;
+		}
+	}
+}
+
+.btn-secondary {
+	background-color: $btn-secondary-bg;
+	border-color: $btn-secondary-border;
+	color: $btn-secondary-color;
+	&:hover {
+		background-color: #f5f5f5;
+	} // active state override
+	&:not(:disabled):not(.disabled):active,
+	&:not(:disabled):not(.disabled).active,
+	.show > &.dropdown-toggle {
+		background-color: #f5f5f5;
+		box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+	}
+}
+
+.btn-outline-secondary {
+	border-color: $btn-secondary-border !important;
+	color: $btn-secondary-color;
+	&:hover {
+		color: $btn-secondary-color;
+		background-color: #f5f5f5 !important;
+	}
+	&:focus {
+		box-shadow: 0 0 0 0.2rem rgba($btn-secondary-border, 0.5);
+	}
+}
+
+span.btn {
+	-webkit-appearance: none !important;
+}
+
+// Forms
+.form-control {
+	box-shadow: 0 0 0 #000 !important;
+	font-size: 0.875rem; //14px
+	&:focus {
+		border-color: $input-focus-border-color;
+	}
+}
+
+.form-control-sm,
+select.form-control-sm {
+	font-size: .75rem;
+	height: 31px;
+}
+
+.custom-select {
+	-webkit-appearance: none;
+}
+
+.custom-control-label::before {
+	top: 0.19rem;
+	border: 1px solid $gray;
+}
+
+fieldset {
+	padding-bottom: 20px;
+	border-bottom: 1px dashed #eee;
+	margin-bottom: 20px;
+	&.last-child,
+	&:last-child {
+		border-bottom: 0;
+	}
+	.form-group {
+		margin-bottom: 0;
+	}
+}
+
+.input-group-text {
+	font-size: .875rem; // 14px
+}
+
+@include media-breakpoint-down(sm) {
+	// Remove Input Shadows on iPad
+	input[type="text"],
+	input[type="email"],
+	input[type="search"],
+	input[type="password"] {
+		-webkit-appearance: none;
+	}
+}
+
+// fix for ie9 (dropdwon no showing)
+.topnavbar,
+.navbar,
+.navbar .dropdown-menu {
+	filter: none !important;
 }
