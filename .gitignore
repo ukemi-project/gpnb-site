@@ -11,6 +11,9 @@ yarn.lock
 .git/
 .idea/
 
+# token/leys .etc
+credentials/
+
 # Runtime data
 pids
 *.pid

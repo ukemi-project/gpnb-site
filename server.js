@@ -1,21 +1,32 @@
 import dotenv from 'dotenv';
-dotenv.config();
 
 import next from 'next';
 import express from 'express';
 import fileUpload from 'express-fileupload';
 import session from 'express-session';
 import * as admin from 'firebase-admin';
+import * as serviceAccount from './credentials/firebaseServer.json';
+import Store from 'connect-mongo';
+import mongoose from 'mongoose';
 
-import path from 'path';
-import cluster from 'cluster';
+import os from 'os';
 import bodyParser from 'body-parser';
+import cluster from 'cluster';
+import path from 'path';
 
-const FileStore = require( 'session-file-store' )( session ),
-	numCPUs = require( 'os' ).cpus().length,
+dotenv.config();
+
+const db = mongoose.connect( process.env.MONGO, { useNewUrlParser: true } ),
+	MongoStore = new Store( session ),
+	numCPUs = os.cpus().length,
 	dev = process.env.NODE_ENV !== 'production',
-	port = process.env.PORT || 3000,
-	routes = [ { src: '/login', dest: '/pages/login' } ];
+	port = process.env.PORT || 3000;
+
+const routes = [
+	{ src: '/login', dest: '/pages/login' },
+	{ src: '/signup', dest: '/pages/signup' },
+	{ src: '/help', dest: '/pages/help' }
+];
 
 if ( !dev && cluster.isMaster ) {
 	console.log( `Node cluster master ${process.id} is running.` );
@@ -33,8 +44,8 @@ if ( !dev && cluster.isMaster ) {
 		handle = app.getRequestHandler(),
 		firebase = admin.initializeApp(
 			{
-				credential: admin.credential.cert( require( './credentials/server' ) ),
-				databaseURL: '' // TODO database URL goes here
+				credential: admin.credential.cert( serviceAccount ),
+				databaseURL: process.env.databaseURL
 			},
 			'server'
 		);
@@ -60,18 +71,62 @@ if ( !dev && cluster.isMaster ) {
 				} );
 			}
 
-			// Static files
-			// https://github.com/zeit/next.js/tree/4.2.3#user-content-static-file-serving-eg-images
-			server.use(
-				'/images',
-				express.static( path.join( __dirname, 'images' ), {
-					maxAge: dev ? '0' : '365d'
+			server
+				.use( fileUpload() )
+				.use( bodyParser.json() )
+				.use( bodyParser.urlencoded( { extended: true } ) )
+				.use(
+					session( {
+						store: new MongoStore( { mongooseConnection: mongoose.connection } ),
+						resave: false,
+						saveUninitialized: true,
+						secret: process.env.sessionSecret
+					} )
+				)
+				.use( ( req, res, next ) => {
+					req.firebaseServer = firebase;
+					next();
 				} )
-			);
+				.use(
+					'/images',
+					express.static( path.join( __dirname, 'images' ), {
+						maxAge: dev ? '0' : '365d'
+					} )
+				);
 
-			server.use( fileUpload() ).use( bodyParser.json() );
+			/* ---------------------------------------------
+				API LOGIN
+			---------------------------------------------- */
+			server.post( '/api/login', ( req, res ) => {
+				if ( !req.body ) {
+					return res.sendStatus( 400 );
+				}
 
-			server.post( '/upload', ( req, res ) => {
+				const token = req.body.token;
+
+				firebase
+					.auth()
+					.verifyIdToken( token )
+					.then( ( decodedToken ) => {
+						req.session.decodedToken = decodedToken;
+						return decodedToken;
+					} )
+					.then( ( decodedToken ) => res.json( { status: true, decodedToken } ) )
+					.catch( ( error ) => res.json( { error } ) );
+			} );
+
+			/* ---------------------------------------------
+				API LOGOUT
+			---------------------------------------------- */
+			server.post( '/api/logout', ( req, res ) => {
+				req.session.decodedToken = null;
+				res.json( { status: true } );
+			} );
+
+			/* ---------------------------------------------
+				API UPLOAD
+			---------------------------------------------- */
+			server.post( '/api/upload', ( req, res ) => {
 				if ( req.files === null ) {
 					return res.status( 400 ).json( { msg: 'No file uploaded.' } );
 				}
