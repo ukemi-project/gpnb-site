@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Input } from 'reactstrap';
 import { auth, createUserProfileDocument } from '../firebase';
 
 const SignUp = () => {
@@ -27,32 +28,62 @@ const SignUp = () => {
 	};
 
 	return (
-		<form className='SignUp' onSubmit={handleSubmit}>
-			<h2>Sign Up</h2>
-			<input
-				type='text'
-				name='displayName'
-				placeholder='Display Name'
-				value={values.displayName}
-				onChange={handleChange}
-			/>
-			<input
-				type='email'
-				name='email'
-				placeholder='Email'
-				value={values.email}
-				autoComplete='current-email'
-				onChange={handleChange}
-			/>
-			<input
-				type='password'
-				name='password'
-				placeholder='Password'
-				value={values.password}
-				autoComplete='current-password'
-				onChange={handleChange}
-			/>
-			<input type='submit' value='Sign Up' />
+		<form className='mb-3' name='register' onSubmit={handleSubmit}>
+			<div className='form-group'>
+				<div className='input-group with-focus'>
+					<Input
+						type='text'
+						id='id-name'
+						name='displayName'
+						className='border-right-0'
+						placeholder='Display Name'
+						value={values.displayName}
+						onChange={handleChange}
+					/>
+					<div className='input-group-append'>
+						<span className='input-group-text text-muted bg-transparent border-left-0'>
+							<em className='fa fa-user' />
+						</span>
+					</div>
+				</div>
+			</div>
+			<div className='form-group'>
+				<div className='input-group with-focus'>
+					<Input
+						type='email'
+						id='id-email'
+						name='email'
+						className='border-right-0'
+						placeholder='Enter email'
+						value={values.email}
+						onChange={handleChange}
+					/>
+					<div className='input-group-append'>
+						<span className='input-group-text text-muted bg-transparent border-left-0'>
+							<em className='fa fa-envelope' />
+						</span>
+					</div>
+				</div>
+			</div>
+			<div className='form-group'>
+				<div className='input-group with-focus'>
+					<Input
+						type='password'
+						id='id-password'
+						name='password'
+						className='border-right-0'
+						placeholder='Password'
+						value={values.password}
+						onChange={handleChange}
+					/>
+					<div className='input-group-append'>
+						<span className='input-group-text text-muted bg-transparent border-left-0'>
+							<em className='fa fa-lock' />
+						</span>
+					</div>
+				</div>
+			</div>
+			<input className='btn btn-block btn-primary mt-3' type='submit' value='Sign Up' />
 		</form>
 	);
 };

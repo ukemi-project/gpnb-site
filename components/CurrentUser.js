@@ -13,7 +13,7 @@ const CurrentUser = ( { displayName, photoURL, email, createdAt, children } ) =>
 						<h2>{displayName}</h2>
 					</Link>
 					<p className='email'>{email}</p>
-					<p className='created-at'>{moment( createdAt ).calendar()}</p>
+					<p className='created-at'>{moment( createdAt.toDate() ).calendar()}</p>
 				</div>
 			</div>
 			<div>
@@ -28,7 +28,7 @@ CurrentUser.defaultProps = {
 	displayName: 'Hideo Kojima',
 	email: 'hideo@kojima.net',
 	photoURL: 'https://i1.wp.com/nordicgame.com/wp-content/uploads/2016/03/hideo.kojima.final_.850.560.jpg',
-	createdAt: new Date()
+	createdAt: 'June 2, 2019 at 1:30:28 PM UTC+1'
 };
 
 export default CurrentUser;

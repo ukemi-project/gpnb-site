@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import CurrentUser from '../components/CurrentUser';
+import Application from '../containers/Application';
 import SignInAndSignUp from '../components/SignInAndSignUp';
 import { UserContext } from '../providers/UserProvider';
 
@@ -10,7 +10,7 @@ const Index = ( { loading } ) => {
 		return null;
 	}
 
-	return <div>{user ? <CurrentUser {...user} /> : <SignInAndSignUp />}</div>;
+	return <div>{user ? <Application /> : <SignInAndSignUp />}</div>;
 };
 
 export default Index;
