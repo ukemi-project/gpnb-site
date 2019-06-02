@@ -13,6 +13,7 @@
 	"dependencies": {
 		"@babel/polyfill": "^7.4.4",
 		"@fortawesome/fontawesome-free": "^5.8.1",
+		"axios": "^0.19.0",
 		"bootstrap": "^4.3.1",
 		"connect-mongo": "^2.0.3",
 		"express": "^4.16.4",
@@ -26,6 +27,7 @@
 		"next-nprogress": "^1.4.0",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
+		"react-dropzone": "^10.1.5",
 		"reactstrap": "^8.0.0",
 		"session-file-store": "^1.2.0",
 		"simple-line-icons": "^2.4.1"
@@ -42,6 +44,7 @@
 		"babel-eslint": "^10.0.1",
 		"babel-plugin-module-resolver": "^3.2.0",
 		"concurrently": "^4.1.0",
+		"cors": "^2.8.5",
 		"cross-env": "^5.2.0",
 		"dotenv": "^8.0.0",
 		"eslint": "^5.16.0",

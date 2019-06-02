@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Input } from 'reactstrap';
+import { Input, Form, FormGroup, Label } from 'reactstrap';
 import { signInWithGoogle, signInWithEmailAndPassword } from '../firebase';
 import useForm from '../hooks/useForm';
 
@@ -13,8 +13,8 @@ const SignIn = () => {
 		{ values, setValues, handleChange, handleSubmit } = useForm( submit );
 
 	return (
-		<form className='mb-3' name='login' onSubmit={handleSubmit}>
-			<div className='form-group'>
+		<Form className='mb-3' name='login' onSubmit={handleSubmit}>
+			<FormGroup>
 				<div className='input-group with-focus'>
 					<Input
 						type='email'
@@ -32,8 +32,8 @@ const SignIn = () => {
 						</span>
 					</div>
 				</div>
-			</div>
-			<div className='form-group'>
+			</FormGroup>
+			<FormGroup>
 				<div className='input-group with-focus'>
 					<Input
 						type='password'
@@ -51,13 +51,13 @@ const SignIn = () => {
 						</span>
 					</div>
 				</div>
-			</div>
+			</FormGroup>
 			<div className='clearfix'>
 				<div className='checkbox c-checkbox float-left mt-0'>
-					<label>
-						<input type='checkbox' value='' name='remember' />
+					<Label check>
+						<Input type='checkbox' value='' name='remember' />
 						<span className='fa fa-check' />Remember Me
-					</label>
+					</Label>
 				</div>
 				<div className='float-right'>
 					<Link href='/pages/recover' as='/recover'>
@@ -65,11 +65,14 @@ const SignIn = () => {
 					</Link>
 				</div>
 			</div>
-			<input className='btn btn-block btn-primary mt-3' type='submit' value='Login' />
-			<button className='btn btn-block btn-primary mt-3' onClick={signInWithGoogle}>
-				Login With Google
-			</button>
-		</form>
+			<Input className='btn btn-block btn-primary mt-3' type='submit' value='Login' />
+			<Input
+				className='btn btn-block btn-primary mt-3'
+				type='button'
+				value='Login With Google'
+				onClick={signInWithGoogle}
+			/>
+		</Form>
 	);
 };
 

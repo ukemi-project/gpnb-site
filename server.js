@@ -8,7 +8,7 @@ import * as admin from 'firebase-admin';
 import * as serviceAccount from './credentials/firebaseServer.json';
 import Store from 'connect-mongo';
 import mongoose from 'mongoose';
-
+import cors from 'cors';
 import os from 'os';
 import bodyParser from 'body-parser';
 import cluster from 'cluster';
@@ -68,6 +68,7 @@ if ( !dev && cluster.isMaster ) {
 			}
 
 			server
+				.use( cors() ) // TODO: remove
 				.use( fileUpload() )
 				.use( bodyParser.json() )
 				.use( bodyParser.urlencoded( { extended: true } ) )
@@ -94,21 +95,25 @@ if ( !dev && cluster.isMaster ) {
 				API UPLOAD
 			---------------------------------------------- */
 			server.post( '/api/upload', ( req, res ) => {
+				let output = [];
+
 				if ( req.files === null ) {
 					return res.status( 400 ).json( { msg: 'No file uploaded.' } );
 				}
 
-				const file = req.files.file;
+				req.files.file.forEach( ( file ) => {
+					file.mv( `${__dirname}/static/uploads/${file.name}`, ( err ) => {
+						if ( err ) {
+							console.error( err );
 
-				file.mv( `${__dirname}/public/uploads/${file.name}`, ( err ) => {
-					if ( err ) {
-						console.error( err );
+							return res.status( 500 ).send( err );
+						}
 
-						return res.status( 500 ).send( err );
-					}
-
-					res.json( { fileName: file.name, filePath: `/uploads/${file.name}` } );
+						output.push( { fileName: file.name, filePath: `/uploads/${file.name}` } );
+					} );
 				} );
+
+				res.json( output );
 			} );
 
 			routes.forEach( ( r ) => server.get( r.src, ( req, res ) => app.render( req, res, r.dest, req.params ) ) );

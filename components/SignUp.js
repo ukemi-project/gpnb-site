@@ -1,25 +1,27 @@
 import React from 'react';
-import { Input } from 'reactstrap';
+import { Input, Form, FormGroup } from 'reactstrap';
 import { auth, createUserProfileDocument } from '../firebase';
 import useForm from '../hooks/useForm';
 
 const SignUp = () => {
+	// UseForm Callback function
 	const register = async() => {
-			const { displayName, email, password } = values; // eslint-disable-line no-use-before-define
+		const { displayName, email, password } = values; // eslint-disable-line no-use-before-define
 
-			try {
-				const user = await auth.createUserWithEmailAndPassword( email, password );
+		try {
+			const user = await auth.createUserWithEmailAndPassword( email, password );
 
-				createUserProfileDocument( user.user, { displayName } );
-			} catch ( err ) {
-				console.error( err );
-			}
-		},
-		{ values, handleChange, handleSubmit } = useForm( register );
+			createUserProfileDocument( user.user, { displayName } );
+		} catch ( err ) {
+			console.error( err );
+		}
+	};
+
+	const { values, handleChange, handleSubmit } = useForm( register );
 
 	return (
-		<form className='mb-3' name='register' onSubmit={handleSubmit}>
-			<div className='form-group'>
+		<Form className='mb-3' name='register' onSubmit={handleSubmit}>
+			<FormGroup>
 				<div className='input-group with-focus'>
 					<Input
 						type='text'
@@ -36,8 +38,8 @@ const SignUp = () => {
 						</span>
 					</div>
 				</div>
-			</div>
-			<div className='form-group'>
+			</FormGroup>
+			<FormGroup>
 				<div className='input-group with-focus'>
 					<Input
 						type='email'
@@ -54,8 +56,8 @@ const SignUp = () => {
 						</span>
 					</div>
 				</div>
-			</div>
-			<div className='form-group'>
+			</FormGroup>
+			<FormGroup>
 				<div className='input-group with-focus'>
 					<Input
 						type='password'
@@ -72,9 +74,9 @@ const SignUp = () => {
 						</span>
 					</div>
 				</div>
-			</div>
-			<input className='btn btn-block btn-primary mt-3' type='submit' value='Sign Up' />
-		</form>
+			</FormGroup>
+			<Input className='btn btn-block btn-primary mt-3' type='submit' value='Sign Up' />
+		</Form>
 	);
 };
 
