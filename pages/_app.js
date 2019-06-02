@@ -1,7 +1,6 @@
 import App, { Container } from 'next/app';
 import React from 'react';
-import Router from 'next/router';
-import UserContext from '../components/UserContext';
+import { UserProvider } from '../providers/UserProvider';
 import Layout from '../containers/Layout';
 
 import '@fortawesome/fontawesome-free/css/brands.css';
@@ -14,11 +13,6 @@ import '../styles/bootstrap.scss';
 import '../styles/app.scss';
 
 class MyApp extends App {
-	state = {
-		user: null,
-		theme: 'dark'
-	};
-
 	static async getInitialProps( { Component, ctx } ) {
 		let pageProps = {};
 
@@ -29,33 +23,28 @@ class MyApp extends App {
 		return { pageProps };
 	}
 
-	componentDidMount = () => {
-		const user = localStorage.getItem( 'gpnb-user' );
+	// ComponentDidMount = () => {
+	// 	const user = localStorage.getItem( 'gpnb-user' );
 
-		if ( this.state.user ) {
-			this.setState( {
-				user
-			} );
-		} else {
-			Router.push( '/login' );
-		}
-	};
+	// 	if ( this.state.user ) {
+	// 		this.setState( {
+	// 			user
+	// 		} );
+	// 	} else {
+	// 		Router.push( '/login' );
+	// 	}
+	// };
 
 	render() {
 		const { Component, pageProps } = this.props;
 
 		return (
 			<Container>
-				<UserContext.Provider
-					value={{
-						user: this.state.user,
-						theme: this.state.theme
-					}}
-				>
+				<UserProvider>
 					<Layout>
 						<Component {...pageProps} />
 					</Layout>
-				</UserContext.Provider>
+				</UserProvider>
 			</Container>
 		);
 	}

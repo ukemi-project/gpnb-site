@@ -20,6 +20,7 @@
 		"express-session": "^1.16.1",
 		"firebase": "^6.0.1",
 		"firebase-admin": "^7.3.0",
+		"moment": "^2.24.0",
 		"mongoose": "^5.5.7",
 		"next": "^8.1.0",
 		"next-nprogress": "^1.4.0",

@@ -22,11 +22,7 @@ const db = mongoose.connect( process.env.MONGO, { useNewUrlParser: true } ),
 	dev = process.env.NODE_ENV !== 'production',
 	port = process.env.PORT || 3000;
 
-const routes = [
-	{ src: '/login', dest: '/pages/login' },
-	{ src: '/signup', dest: '/pages/signup' },
-	{ src: '/help', dest: '/pages/help' }
-];
+const routes = [ { src: '/help', dest: '/pages/help' } ];
 
 if ( !dev && cluster.isMaster ) {
 	console.log( `Node cluster master ${process.id} is running.` );
@@ -93,35 +89,6 @@ if ( !dev && cluster.isMaster ) {
 						maxAge: dev ? '0' : '365d'
 					} )
 				);
-
-			/* ---------------------------------------------
-				API LOGIN
-			---------------------------------------------- */
-			server.post( '/api/login', ( req, res ) => {
-				if ( !req.body ) {
-					return res.sendStatus( 400 );
-				}
-
-				const token = req.body.token;
-
-				firebase
-					.auth()
-					.verifyIdToken( token )
-					.then( ( decodedToken ) => {
-						req.session.decodedToken = decodedToken;
-						return decodedToken;
-					} )
-					.then( ( decodedToken ) => res.json( { status: true, decodedToken } ) )
-					.catch( ( error ) => res.json( { error } ) );
-			} );
-
-			/* ---------------------------------------------
-				API LOGOUT
-			---------------------------------------------- */
-			server.post( '/api/logout', ( req, res ) => {
-				req.session.decodedToken = null;
-				res.json( { status: true } );
-			} );
 
 			/* ---------------------------------------------
 				API UPLOAD

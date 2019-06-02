@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Input } from 'reactstrap';
+import { signInWithGoogle } from '../firebase';
 
-const Login = ( props ) => {
-	const [ email, setEmail ] = useState( '' ),
-		[ password, setPassword ] = useState( '' );
+const SignIn = ( props ) => {
+	const [ values, setValues ] = useState( {} );
+
+	const handleChange = ( event ) => {
+		event.persist();
+		setValues( () => ( { ...values, [ event.target.name ]: event.target.value } ) );
+	};
+
+	const handleSubmit = ( event ) => {
+		event.preventDefault();
+		setValues( { email: '', password: '' } );
+	};
 
 	return (
 		<div className='block-center mt-4 wd-xl'>
@@ -15,7 +25,7 @@ const Login = ( props ) => {
 				</div>
 				<div className='card-body'>
 					<p className='text-center text-bold py-2'>Please note, this site is still in beta.</p>
-					<form className='mb-3' name='login' onSubmit={( e ) => e.preventDefault() && false}>
+					<form className='mb-3' name='login' onSubmit={handleSubmit}>
 						<div className='form-group'>
 							<div className='input-group with-focus'>
 								<Input
@@ -24,10 +34,8 @@ const Login = ( props ) => {
 									name='email'
 									className='border-right-0'
 									placeholder='Enter email'
-									invalid=''
-									data-validate='[&quot;required&quot;, &quot;email&quot;]'
-									value={email}
-									onChange={( e ) => setEmail( e.target.value )}
+									value={values.email}
+									onChange={handleChange}
 								/>
 								<div className='input-group-append'>
 									<span className='input-group-text text-muted bg-transparent border-left-0'>
@@ -44,10 +52,8 @@ const Login = ( props ) => {
 									name='password'
 									className='border-right-0'
 									placeholder='Password'
-									invalid=''
-									data-validate='[&quot;required&quot;]'
-									value={password}
-									onChange={( e ) => setPassword( e.target.value )}
+									value={values.password}
+									onChange={handleChange}
 								/>
 								<div className='input-group-append'>
 									<span className='input-group-text text-muted bg-transparent border-left-0'>
@@ -69,16 +75,23 @@ const Login = ( props ) => {
 								</Link>
 							</div>
 						</div>
-						<button className='btn btn-block btn-primary mt-3' type='submit' onClick={login}>
-							Login
+						<input className='btn btn-block btn-primary mt-3' type='submit' value='Login' />
+						<button className='btn btn-block btn-primary mt-3' onClick={signInWithGoogle}>
+							Login With Google
 						</button>
 					</form>
 
 					<p className='pt-3 text-center'>
-						Need an account?
-						<Link href='/pages/register' as='/register'>
-							<a className='text-muted'> Register Now</a>
-						</Link>
+						Need an account?{' '}
+						<a
+							className='text-muted'
+							role='button'
+							tabIndex='0'
+							onClick={() => props.form( 'register' )}
+							onKeyPress={() => props.form( 'register' )}
+						>
+							Register Now
+						</a>
 					</p>
 				</div>
 			</div>
@@ -97,4 +110,4 @@ const Login = ( props ) => {
 	);
 };
 
-export default Login;
+export default SignIn;
