@@ -1,11 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
 import { Input } from 'reactstrap';
-import { signInWithGoogle } from '../firebase';
+import { signInWithGoogle, signInWithEmailAndPassword } from '../firebase';
 import useForm from '../hooks/useForm';
 
 const SignIn = () => {
-	const submit = () => setValues( { email: '', password: '' } ), // eslint-disable-line no-use-before-define
+	const submit = () => {
+			signInWithEmailAndPassword( values.email, values.password ); // eslint-disable-line no-use-before-define
+
+			setValues( { email: '', password: '' } ); // eslint-disable-line no-use-before-define
+		},
 		{ values, setValues, handleChange, handleSubmit } = useForm( submit );
 
 	return (
@@ -18,6 +22,7 @@ const SignIn = () => {
 						name='email'
 						className='border-right-0'
 						placeholder='Enter email'
+						autoComplete='current-email'
 						value={values.email}
 						onChange={handleChange}
 					/>
@@ -36,6 +41,7 @@ const SignIn = () => {
 						name='password'
 						className='border-right-0'
 						placeholder='Password'
+						autoComplete='current-password'
 						value={values.password}
 						onChange={handleChange}
 					/>

@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
@@ -11,9 +11,29 @@ export const firestore = firebase.firestore();
 export const storage = firebase.storage();
 export const provider = new firebase.auth.GoogleAuthProvider();
 
-export const signInWithGoogle = () => auth.signInWithPopup( provider );
-export const signOut = () => auth.signOut();
-// TODO: Sign in with user/pass
+export const signInWithGoogle = () => {
+	try {
+		auth.signInWithPopup( provider );
+	} catch ( err ) {
+		console.log( err );
+	}
+};
+
+export const signInWithEmailAndPassword = ( email, password ) => {
+	try {
+		auth.signInWithEmailAndPassword( email, password );
+	} catch ( err ) {
+		console.log( err );
+	}
+};
+
+export const signOut = () => {
+	try {
+		auth.signOut();
+	} catch ( err ) {
+		console.log( err );
+	}
+};
 
 // Return userDocument from firestore
 export const getUserDocument = async( user ) => {
