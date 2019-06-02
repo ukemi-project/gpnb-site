@@ -1,20 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Input } from 'reactstrap';
 import { signInWithGoogle } from '../firebase';
+import useForm from '../hooks/useForm';
 
 const SignIn = () => {
-	const [ values, setValues ] = useState( {} );
-
-	const handleChange = ( event ) => {
-		event.persist();
-		setValues( () => ( { ...values, [ event.target.name ]: event.target.value } ) );
-	};
-
-	const handleSubmit = ( event ) => {
-		event.preventDefault();
-		setValues( { email: '', password: '' } );
-	};
+	const submit = () => setValues( { email: '', password: '' } ), // eslint-disable-line no-use-before-define
+		{ values, setValues, handleChange, handleSubmit } = useForm( submit );
 
 	return (
 		<form className='mb-3' name='login' onSubmit={handleSubmit}>

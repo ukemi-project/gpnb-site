@@ -1,31 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Input } from 'reactstrap';
 import { auth, createUserProfileDocument } from '../firebase';
+import useForm from '../hooks/useForm';
 
 const SignUp = () => {
-	const [ values, setValues ] = useState( {} );
+	const register = async() => {
+			const { displayName, email, password } = values; // eslint-disable-line no-use-before-define
 
-	const handleChange = ( event ) => {
-		event.persist();
+			try {
+				const user = await auth.createUserWithEmailAndPassword( email, password );
 
-		setValues( () => ( { ...values, [ event.target.name ]: event.target.value } ) );
-	};
-
-	const handleSubmit = async( event ) => {
-		event.preventDefault();
-
-		const { displayName, email, password } = values;
-
-		try {
-			const user = await auth.createUserWithEmailAndPassword( email, password );
-
-			createUserProfileDocument( user.user, { displayName } );
-		} catch ( err ) {
-			console.error( err );
-		}
-
-		setValues( { displayName: '', email: '', password: '' } );
-	};
+				createUserProfileDocument( user.user, { displayName } );
+			} catch ( err ) {
+				console.error( err );
+			}
+		},
+		{ values, handleChange, handleSubmit } = useForm( register );
 
 	return (
 		<form className='mb-3' name='register' onSubmit={handleSubmit}>
