@@ -23,6 +23,7 @@ const SignIn = () => {
 						name='email'
 						className='border-right-0'
 						placeholder='Enter email'
+						autoComplete='username'
 						data-validate='[&quot;required&quot;, &quot;email&quot;]'
 						invalid={hasErrors( 'email', 'required' ) || hasErrors( 'email', 'email' )}
 						value={values.email}
@@ -43,6 +44,7 @@ const SignIn = () => {
 						name='password'
 						className='border-right-0'
 						placeholder='Password'
+						autoComplete='current-password'
 						data-param={6}
 						data-validate='[&quot;required&quot;, &quot;minlen&quot;]'
 						invalid={hasErrors( 'password', 'required' ) || hasErrors( 'password', 'minlen' )}

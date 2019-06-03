@@ -77,6 +77,7 @@ const SignUp = () => {
 						name='password'
 						className='border-right-0'
 						placeholder='Password'
+						autoComplete='new-password'
 						data-param={6}
 						data-validate='[&quot;required&quot;, &quot;minlen&quot;]'
 						invalid={hasErrors( 'password', 'required' ) || hasErrors( 'password', 'minlen' )}
@@ -102,6 +103,7 @@ const SignUp = () => {
 						name='password2'
 						className='border-right-0'
 						placeholder='Confirm Password'
+						autoComplete='new-password'
 						invalid={hasErrors( 'password2', 'equalto' )}
 						data-validate='[&quot;equalto&quot;]'
 						data-param='id-password'
