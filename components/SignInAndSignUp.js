@@ -17,19 +17,19 @@ const SignInAndSignUp = () => {
 					<p className='text-center text-bold py-2'>Please note, this site is still in beta.</p>
 					{formType === 'register' ? <SignUp /> : <SignIn />}
 					{formType === 'login' ? (
-						<p className='pt-3 text-center'>
-							Need an account?{' '}
-							<button className='btn btn-secondary' onClick={() => setFormType( 'register' )}>
+						<>
+							<p className='pt-3 text-center'>Need an account?</p>
+							<button className='btn btn-block btn-secondary' onClick={() => setFormType( 'register' )}>
 								Register Now
 							</button>
-						</p>
+						</>
 					) : (
-						<p className='pt-3 text-center'>
-							Already have an account?{' '}
-							<button className='btn btn-secondary' onClick={() => setFormType( 'login' )}>
+						<>
+							<p className='pt-3 text-center'>Already have an account?</p>
+							<button className='btn btn-block btn-secondary' onClick={() => setFormType( 'login' )}>
 								Login
 							</button>
-						</p>
+						</>
 					)}
 				</div>
 			</div>

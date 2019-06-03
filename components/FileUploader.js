@@ -1,8 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { Input, Form, FormGroup, FormText, Label } from 'reactstrap';
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
-import useForm from '../hooks/useForm';
 
 const FileUploader = () => {
 	const [ uploadPercentage, setUploadPercentage ] = useState( 0 ),
@@ -38,7 +36,7 @@ const FileUploader = () => {
 
 	const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone( {
 			onDrop,
-			accept: 'image/png, image/jpeg, image/gif',
+			accept: 'image/png, image/jpeg, image/gif, model/gltf+json',
 			minSize: 0,
 			maxSize
 		} ),

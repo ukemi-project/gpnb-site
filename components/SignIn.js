@@ -5,12 +5,13 @@ import { signInWithGoogle, signInWithEmailAndPassword } from '../firebase';
 import useForm from '../hooks/useForm';
 
 const SignIn = () => {
+	// UseForm Callback function
 	const submit = () => {
 			signInWithEmailAndPassword( values.email, values.password ); // eslint-disable-line no-use-before-define
 
 			setValues( { email: '', password: '' } ); // eslint-disable-line no-use-before-define
 		},
-		{ values, setValues, handleChange, handleSubmit } = useForm( submit );
+		{ values, hasErrors, setValues, handleChange, handleSubmit } = useForm( submit );
 
 	return (
 		<Form className='mb-3' name='login' onSubmit={handleSubmit}>
@@ -22,7 +23,8 @@ const SignIn = () => {
 						name='email'
 						className='border-right-0'
 						placeholder='Enter email'
-						autoComplete='current-email'
+						data-validate='[&quot;required&quot;, &quot;email&quot;]'
+						invalid={hasErrors( 'email', 'required' ) || hasErrors( 'email', 'email' )}
 						value={values.email}
 						onChange={handleChange}
 					/>
@@ -41,7 +43,9 @@ const SignIn = () => {
 						name='password'
 						className='border-right-0'
 						placeholder='Password'
-						autoComplete='current-password'
+						data-param={6}
+						data-validate='[&quot;required&quot;, &quot;minlen&quot;]'
+						invalid={hasErrors( 'password', 'required' ) || hasErrors( 'password', 'minlen' )}
 						value={values.password}
 						onChange={handleChange}
 					/>
@@ -65,13 +69,12 @@ const SignIn = () => {
 					</Link>
 				</div>
 			</div>
-			<Input className='btn btn-block btn-primary mt-3' type='submit' value='Login' />
-			<Input
-				className='btn btn-block btn-primary mt-3'
-				type='button'
-				value='Login With Google'
-				onClick={signInWithGoogle}
-			/>
+			<button className='btn btn-block btn-primary mt-3' type='submit'>
+				Login
+			</button>
+			<button className='btn btn-block btn-primary mt-3' type='button' onClick={signInWithGoogle}>
+				Login with Google
+			</button>
 		</Form>
 	);
 };

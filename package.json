@@ -30,7 +30,8 @@
 		"react-dropzone": "^10.1.5",
 		"reactstrap": "^8.0.0",
 		"session-file-store": "^1.2.0",
-		"simple-line-icons": "^2.4.1"
+		"simple-line-icons": "^2.4.1",
+		"validator": "^11.0.0"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.4.4",
