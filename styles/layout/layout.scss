@@ -5,6 +5,7 @@ $content-heading-bg: #fafbfc;
 $content-heading-border: #cfdbe2;
 $content-padding: 20px;
 
+$navbar-hg: $navbar-height;
 $footer-hg: 60px;
 
 html {
@@ -21,10 +22,18 @@ html {
 	min-height: 100%;
 	overflow-x: hidden;
 
+	.header-wrapper {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: $z-index-main-section + 10;
+	}
+
 	.section-container {
 		position: relative;
 		height: 100%;
 		margin-left: 0;
+		margin-top: $navbar-hg;
 		z-index: $z-index-main-section;
 		background-color: $content-bg;
 		margin-bottom: $footer-hg !important;

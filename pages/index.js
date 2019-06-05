@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Application from '../containers/Application';
-import SignInAndSignUp from '../components/SignInAndSignUp';
+import SignInAndSignUp from '../containers/SignInAndSignUp';
 import { UserContext } from '../providers/UserProvider';
 
 const Index = ( { loading } ) => {
@@ -10,7 +10,7 @@ const Index = ( { loading } ) => {
 		return null;
 	}
 
-	return <div>{user ? <Application /> : <SignInAndSignUp />}</div>;
+	return <>{user ? <Application /> : <SignInAndSignUp />}</>;
 };
 
 export default Index;

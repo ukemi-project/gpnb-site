@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import SignIn from './SignIn';
-import SignUp from './SignUp';
+import SignIn from '../components/SignIn';
+import SignUp from '../components/SignUp';
 
 const SignInAndSignUp = () => {
 	const [ formType, setFormType ] = useState( 'login' );
