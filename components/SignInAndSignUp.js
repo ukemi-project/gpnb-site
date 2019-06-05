@@ -33,17 +33,6 @@ const SignInAndSignUp = () => {
 					)}
 				</div>
 			</div>
-
-			<div className='p-3 text-center text-white'>
-				<span className='mr-2'>&copy;</span>
-				<span>2019</span>
-				<span className='mx-2'>-</span>
-				<span>The Greatest Park Never Built</span>
-				<br />
-				<span>
-					Maintained by <a href='https://ukemi.ninja'>Ukemi Project</a>
-				</span>
-			</div>
 		</div>
 	);
 };

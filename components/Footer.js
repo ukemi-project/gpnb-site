@@ -4,9 +4,18 @@ const Footer = () => {
 	const year = new Date().getFullYear();
 
 	return (
-		<footer className='footer-container text-center'>
+		<footer className='footer-container text-center text-white'>
+			<span className='mr-2'>&copy;</span>
+			<span>{year}</span>
+			<span className='mx-2'>-</span>
+			<span>The Greatest Park Never Built</span>
+			<br />
 			<span>
-				&copy; {year} - GPNB - A <a href='http://ukemi.ninja'>Ukemi</a> Project
+				Maintained with{' '}
+				<span role='img' aria-label='Heart Emoji'>
+					❤️
+				</span>{' '}
+				by <a href='https://ukemi.ninja'>Ukemi Project</a>
 			</span>
 		</footer>
 	);
