@@ -120,7 +120,7 @@ const SignUp = () => {
 					)}
 				</div>
 			</FormGroup>
-			<button className='btn btn-block btn-primary mt-3' type='submit'>
+			<button className='btn btn-block btn-blue mt-3' type='submit'>
 				Create Account
 			</button>
 		</Form>

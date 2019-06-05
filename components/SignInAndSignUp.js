@@ -9,7 +9,7 @@ const SignInAndSignUp = () => {
 	return (
 		<div className='block-center mt-4 wd-xl'>
 			<div className='card card-flat'>
-				<div className='card-header text-center bg-info'>
+				<div className='card-header text-center bg-blue-light'>
 					{/* <img className='block-center rounded' src='/static/img/logo.png' alt='Logo' /> */}
 					<h4 className='block-center text-white'>GPNB</h4>
 				</div>

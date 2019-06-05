@@ -9,8 +9,10 @@ $gray-lighter: #f8fdf9;
 $inverse: #131e26;
 $purple: #7266ba;
 $pink: #f16798;
+$blue: #334d5c;
 $yellow: #fad732;
-$green: #37bc9b;
+// $green: #37bc9b;
+$green: #45b29d;
 
 $primary: #5d9cec;
 $secondary: #fff;
@@ -33,6 +35,7 @@ $green-light: lighten($green, $amountOfLight);
 $pink-light: lighten($pink, $amountOfLight);
 $purple-light: lighten($purple, $amountOfLight);
 $yellow-light: lighten($yellow, $amountOfLight);
+$blue-light: lighten($blue, $amountOfLight);
 $primary-dark: darken($primary, $amountOfLight);
 $success-dark: darken($success, $amountOfLight);
 $info-dark: darken($info, $amountOfLight);
@@ -43,6 +46,7 @@ $green-dark: darken($green, $amountOfLight);
 $pink-dark: darken($pink, $amountOfLight);
 $purple-dark: darken($purple, $amountOfLight);
 $yellow-dark: darken($yellow, $amountOfLight);
+$blue-dark: darken($blue, $amountOfLight);
 
 $btn-secondary-color: #333;
 $btn-secondary-bg: #fff;
@@ -55,6 +59,7 @@ $colors: (
 	"pink": $pink,
 	"yellow": $yellow,
 	"green": $green,
+	'blue': $blue,
 	"primary": $primary,
 	"success": $success,
 	"info": $info,
@@ -80,16 +85,45 @@ $colors: (
 	'inverse-light': $inverse-light,
 	'inverse-dark': $inverse-dark,
 	'yellow-light': $yellow-light,
-	'yellow-dark': $yellow-dark
+	'yellow-dark': $yellow-dark,
+	'blue-light': $blue-light,
+	'blue-dark': $blue-dark
 );
 
 $theme-colors: (
+	"purple": $purple,
+	"pink": $pink,
+	"yellow": $yellow,
+	"green": $green,
+	'blue': $blue,
 	"primary": $primary,
-	"secondary": $secondary,
 	"success": $success,
 	"info": $info,
 	"warning": $warning,
-	"danger": $danger
+	"danger": $danger,
+	'inverse': $inverse,
+	'primary-light': $primary-light,
+	'primary-dark': $primary-dark,
+	'success-light': $success-light,
+	'success-dark': $success-dark,
+	'info-light': $info-light,
+	'info-dark': $info-dark,
+	'warning-light': $warning-light,
+	'warning-dark': $warning-dark,
+	'danger-light': $danger-light,
+	'danger-dark': $danger-dark,
+	'green-light': $green-light,
+	'green-dark': $green-dark,
+	'pink-light': $pink-light,
+	'pink-dark': $pink-dark,
+	'purple-light': $purple-light,
+	'purple-dark': $purple-dark,
+	'inverse-light': $inverse-light,
+	'inverse-dark': $inverse-dark,
+	'yellow-light': $yellow-light,
+	'yellow-dark': $yellow-dark,
+	'blue-light': $blue-light,
+	'blue-dark': $blue-dark
 );
 
 // Fonts

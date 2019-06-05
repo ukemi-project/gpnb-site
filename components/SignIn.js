@@ -71,10 +71,10 @@ const SignIn = () => {
 					</Link>
 				</div>
 			</div>
-			<button className='btn btn-block btn-primary mt-3' type='submit'>
+			<button className='btn btn-block btn-blue mt-3' type='submit'>
 				Login
 			</button>
-			<button className='btn btn-block btn-primary mt-3' type='button' onClick={signInWithGoogle}>
+			<button className='btn btn-block btn-blue mt-3' type='button' onClick={signInWithGoogle}>
 				Login with Google
 			</button>
 		</Form>
