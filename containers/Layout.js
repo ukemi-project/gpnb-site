@@ -11,7 +11,9 @@ const Layout = ( props ) => {
 		<div className='wrapper'>
 			<Head />
 			{user && <Header />}
-			<section className='section-container'>{props.children}</section>
+			<section className='section-container'>
+				<div className='content-wrapper'>{props.children}</div>
+			</section>
 			<Footer />
 		</div>
 	);

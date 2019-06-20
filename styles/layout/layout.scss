@@ -8,6 +8,11 @@ $content-padding: 20px;
 $navbar-hg: $navbar-height;
 $footer-hg: 60px;
 
+$aside-wd: 220px;
+$aside-wd-collapsed: 70px;
+$aside-wd-collapsed-text: 90px;
+$aside-bg: #fff;
+
 html {
 	height: 100%;
 	-ms-touch-action: manipulation;
@@ -59,7 +64,7 @@ html {
 .content-wrapper {
 	padding: 15px;
 	width: 100%;
-	border-top: 1px solid rgba(0, 0, 0, .15);
+	// border-top: 1px solid rgba(0, 0, 0, .15);
 	margin-top: -1px;
 
 	.content-heading {

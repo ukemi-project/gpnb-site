@@ -71,44 +71,39 @@ const FileUploader = () => {
 	// ) );
 
 	return (
-		<div className='content-wrapper'>
-			<div className='content-heading'>Upload.</div>
-			<Container className='container-md'>
-				<p className='text-center text-white mb-3'>
-					You can contribute to the Greatest Park Never Built by submitting your 3D models and designs below.
-					Currently we can only accept submissions in <em>gITF</em> file format and all files are subject to
-					manual verification.
-				</p>
-				<div
-					{...getRootProps()}
-					className={`dropzone card p-3 ${isDragActive ? 'dropzone-drag-active' : ''}`}
-				>
-					<input {...getInputProps()} />
-					<div className='dropzone-previews flex'>
-						<div className='text-center dz-default dz-message'>Drop files here to upload</div>
-					</div>
-					<div className='d-flex align-items-center'>
-						<small>File type/size restrictions active.</small>
-						<small className='ml-auto'>
-							<button type='button' className='btn btn-link' onClick={clearFiles}>
-								Clear files
-							</button>
-						</small>
-					</div>
-					{/* {!isDragActive && 'Drag & drop, or click to select files'}
+		/* <div className='content-heading'>Upload.</div> */
+		<Container className='container-md'>
+			<p className='text-center text-white mb-3'>
+				You can contribute to the Greatest Park Never Built by submitting your 3D models and designs below.
+				Currently we can only accept submissions in <em>gITF</em> file format and all files are subject to
+				manual verification.
+			</p>
+			<div {...getRootProps()} className={`dropzone card p-3 ${isDragActive ? 'dropzone-drag-active' : ''}`}>
+				<input {...getInputProps()} />
+				<div className='dropzone-previews flex'>
+					<div className='text-center dz-default dz-message'>Drop files here to upload</div>
+				</div>
+				<div className='d-flex align-items-center'>
+					<small>File type/size restrictions active.</small>
+					<small className='ml-auto'>
+						<button type='button' className='btn btn-link' onClick={clearFiles}>
+							Clear files
+						</button>
+					</small>
+				</div>
+				{/* {!isDragActive && 'Drag & drop, or click to select files'}
 					{isDragActive && !isDragReject && 'Drop!'}
 					{isDragReject && 'File type not accepted, sorry!'}
 					{isFileTooLarge && <div className='text-danger mt-2'>File is too large.</div>} */}
-				</div>
-				<p>
-					<b>Status</b>: <span>{message}</span>
-					<h4>Accepted files</h4>
-					<div className='card card-flat mt-1 text-success'>{acceptedFilesItems}</div>
-					<h4>Rejected files</h4>
-					<div className='card card-flat mt-1 text-danger'>{rejectedFilesItems}</div>
-				</p>
-			</Container>
-		</div>
+			</div>
+			<p>
+				<b>Status</b>: <span>{message}</span>
+				<h4>Accepted files</h4>
+				<div className='card card-flat mt-1 text-success'>{acceptedFilesItems}</div>
+				<h4>Rejected files</h4>
+				<div className='card card-flat mt-1 text-danger'>{rejectedFilesItems}</div>
+			</p>
+		</Container>
 	);
 };
 

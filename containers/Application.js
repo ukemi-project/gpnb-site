@@ -8,8 +8,8 @@ const Application = () => {
 
 	return (
 		<>
-			<CurrentUser {...user} />
 			<FileUploader />
+			<CurrentUser {...user} />
 		</>
 	);
 };
