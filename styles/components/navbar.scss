@@ -28,6 +28,10 @@ $nav-top-item-desktop-active: $nav-top-item-mobile-active;
 		.navbar-header {
 			width: $nav-header-wd;
 			text-align: center;
+			position: absolute;
+			width: 100%;
+			left: 0;
+			text-align: center;
 			.navbar-brand {
 				width: 100%;
 			}
@@ -40,9 +44,6 @@ $nav-top-item-desktop-active: $nav-top-item-mobile-active;
 	position: relative;
 
 	.navbar-header {
-		position: relative;
-		z-index: 11;
-		padding-left: 2rem;
 		background-color: $nav-header-bg;
 
 		@include media-breakpoint-up(md) {
@@ -141,17 +142,6 @@ $nav-top-item-desktop-active: $nav-top-item-mobile-active;
 
 // Main Desktop
 .top-nav {
-	.navbar-header {
-		display: flex;
-		padding: 0;
-		text-align: left;
-		@include media-breakpoint-up(lg) {
-			width: auto;
-		}
-		.navbar-brand {
-			min-height: $navbar-height;
-		}
-	}
 	.navbar-toggler {
 		border: 0;
 		margin-left: auto;

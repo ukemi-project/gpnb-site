@@ -38,15 +38,15 @@ const NavbarComponent = () => {
 	const toggle = () => setNavOpen( !navOpen );
 
 	return (
-		<Navbar light expand='md' className='top-nav'>
+		<Navbar light expand='sm' className='top-nav'>
 			<div className='navbar-header'>
-				<NavbarBrand href='/'>
+				<NavbarBrand href='/' className='abs'>
 					<div className='brand-logo'>
 						<img className='img-fluid' src='/static/img/gpnb-logo-sm.png' alt='App Logo' />
 					</div>
-					<div className='brand-logo-collapsed'>
-						<img className='img-fluid' src='/static/img/logo-single.png' alt='App Logo' />
-					</div>
+					{/* <div className='brand-logo-collapsed'>
+					<img className='img-fluid' src='/static/img/logo-single.png' alt='App Logo' />
+				</div> */}
 				</NavbarBrand>
 			</div>
 			<NavbarToggler onClick={toggle} />
@@ -80,6 +80,11 @@ const NavbarComponent = () => {
 							);
 						}
 					} )}
+				</Nav>
+				<Nav className='ml-auto'>
+					<NavItem>
+						<NavLink>Search</NavLink>
+					</NavItem>
 				</Nav>
 			</Collapse>
 		</Navbar>
