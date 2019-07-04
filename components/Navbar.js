@@ -8,6 +8,8 @@ import {
 	ListGroup,
 	ListGroupItem,
 	Nav,
+	NavbarBrand,
+	Navbar,
 	Collapse,
 	NavItem,
 	NavLink,
@@ -29,27 +31,27 @@ const itemType = ( item ) => {
 	}
 };
 
-const Navbar = () => {
+const NavbarComponent = () => {
 	const [ navOpen, setNavOpen ] = useState( false ),
 		[ searchOpen, setSearchOpen ] = useState( false );
 
 	const toggle = () => setNavOpen( !navOpen );
 
 	return (
-		<nav className='navbar top-nav navbar-light'>
+		<Navbar light expand='md' className='top-nav'>
 			<div className='navbar-header'>
-				<a className='navbar-brand' href='#/'>
+				<NavbarBrand href='/'>
 					<div className='brand-logo'>
 						<img className='img-fluid' src='/static/img/gpnb-logo-sm.png' alt='App Logo' />
 					</div>
 					<div className='brand-logo-collapsed'>
 						<img className='img-fluid' src='/static/img/logo-single.png' alt='App Logo' />
 					</div>
-				</a>
-				<NavbarToggler onClick={toggle} />
+				</NavbarBrand>
 			</div>
+			<NavbarToggler onClick={toggle} />
 			<Collapse navbar isOpen={navOpen}>
-				<Nav navbar className='mr-auto flex-column flex-lg-row'>
+				<Nav navbar className=''>
 					{NavRoutes.map( ( item, i ) => {
 						if ( itemType( item ) === 'menu' ) {
 							return (
@@ -79,10 +81,9 @@ const Navbar = () => {
 						}
 					} )}
 				</Nav>
-				<Nav navbar className='flex-row' />
 			</Collapse>
-		</nav>
+		</Navbar>
 	);
 };
 
-export default Navbar;
+export default NavbarComponent;

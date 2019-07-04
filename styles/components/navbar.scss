@@ -143,7 +143,6 @@ $nav-top-item-desktop-active: $nav-top-item-mobile-active;
 .top-nav {
 	.navbar-header {
 		display: flex;
-		width: 100%;
 		padding: 0;
 		text-align: left;
 		@include media-breakpoint-up(lg) {
