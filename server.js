@@ -96,7 +96,7 @@ if ( !dev && cluster.isMaster ) {
 			---------------------------------------------- */
 			server.post( '/api/upload', ( req, res ) => {
 				let output = [];
-
+``
 				if ( req.files === null ) {
 					return res.status( 400 ).json( { msg: 'No file uploaded.' } );
 				}

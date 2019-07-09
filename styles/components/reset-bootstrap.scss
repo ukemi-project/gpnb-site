@@ -20,6 +20,47 @@ hr {
 	display: inline-block;
 }
 
+.badge {
+	padding: 0.1875rem 0.4375rem;
+	font-size: 0.75rem;
+	border-radius: 0.625rem;
+	&.badge-warning {
+		color: #fff !important;
+	}
+	&.badge-secondary {
+		background-color: $gray-dark;
+		color: #fff;
+	}
+}
+
+.list-group {
+	line-height: 1.3;
+	.list-group-item {
+		padding: 10px;
+		color: #555;
+		&.active {
+			color: #fff;
+			.badge {
+				background-color: #fff;
+				color: $primary;
+			}
+		}
+		.card > & {
+			border: 0;
+		}
+	}
+}
+
+.list-group + .card-footer {
+	border-top: 0;
+}
+
+.page-header {
+	padding-bottom: 0.59375rem;
+	margin: 2.625rem 0 1.3125rem;
+	border-bottom: 1px solid $gray-light;
+}
+
 // Cards
 .card {
 	border-color: transparent;
@@ -50,6 +91,43 @@ hr {
 
 	.card-header {
 		background-color: #fff;
+	}
+}
+
+.well {
+	border: 1px solid $gray;
+}
+
+.nav-tabs > .nav-item > .nav-link {
+	font-weight: bold;
+	color: $body-color;
+	background-color: $gray-lighter;
+	margin: 0;
+	border: 1px solid $gray;
+	border-radius: 0;
+	padding: 10px 20px;
+	&.active {
+		background-color: $nav-tabs-link-active-bg;
+		&,
+		&:hover,
+		&:focus {
+			//color: inherit;
+			border-bottom-color: #fff;
+		}
+	}
+}
+
+.tab-content {
+	padding: 10px 20px;
+	border-style: solid;
+	border-width: 0 1px 1px 1px;
+	border-color: $gray;
+	.nav-pills + & {
+		border: 0;
+		padding: 0;
+	}
+	.p-0 & {
+		padding: 0 !important;
 	}
 }
 
@@ -169,6 +247,60 @@ fieldset {
 	input[type="password"] {
 		-webkit-appearance: none;
 	}
+}
+
+// Navigation
+.nav {
+	&.nav-pills {
+		.active > a {
+			background-color: $primary;
+		}
+	}
+}
+
+// Dropdown
+.dropdown-menu {
+	border-radius: $border-radius-sm;
+	font-size: 14px;
+	padding: 0.3125rem 0;
+	box-shadow: rgba(0, 0, 0, 0.176) 0px 6px 12px;
+	border-color: $dropdown-border-color;
+	.dropdown-item {
+		line-height: 1.52857143;
+		padding: 0.1875rem 1.25rem;
+	}
+}
+
+.dropdown-header {
+	color: #a1a2a3;
+}
+
+.navbar-top .navbar-nav > .active > a {
+	color: #999;
+	&:hover,
+	&:focus {
+		color: #d1d2d3;
+	}
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+	color: #666;
+	&:hover,
+	&:focus {
+		color: #222;
+	}
+}
+
+// Alert
+@each $color, $value in $theme-colors {
+	.alert-#{$color} {
+		@include alert-variant($value, $value, #fff);
+	}
+}
+
+.alert-secondary {
+	color: $body-color;
+	border-color: $gray-light;
 }
 
 // fix for ie9 (dropdwon no showing)
