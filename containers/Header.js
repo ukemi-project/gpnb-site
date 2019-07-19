@@ -1,10 +1,9 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from './Navbar';
 
 const Header = () => {
 	return (
 		<header className='header-wrapper'>
-			{/* Add banner */}
 			<Navbar />
 		</header>
 	);

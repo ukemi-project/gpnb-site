@@ -1,13 +1,13 @@
-$nav-top-bg: $blue;
+$nav-top-bg: $blue-light;
 $nav-top-bg-start: $nav-top-bg;
-$nav-top-bg-end: $blue-dark;
+$nav-top-bg-end: $blue;
 
 $nav-header-wd: $aside-wd;
 $nav-header-wd-toggled: $aside-wd-collapsed;
 $nav-header-wd-toggled-text: $aside-wd-collapsed-text;
 $nav-header-bg: transparent;
 
-$nav-top-item-mobile: $nav-top-bg;
+$nav-top-item-mobile: $pink;
 $nav-top-item-mobile-active: darken($nav-top-item-mobile, 20%);
 $nav-top-item-desktop: #fff;
 $nav-top-item-desktop-active: $nav-top-item-mobile-active;
@@ -104,7 +104,7 @@ $nav-top-item-desktop-active: $nav-top-item-mobile-active;
 		color: $nav-top-item-desktop;
 		&:hover,
 		&:focus {
-			color: $nav-top-item-desktop-active;
+			color: $pink;
 		}
 	}
 	.navbar-nav > .nav-item.active > .nav-link,
